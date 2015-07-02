@@ -1,0 +1,16 @@
+Frequency	Mean Amplitude	Error Amplitude	Mean Phaseshift	Error  Phaseshift1,000000E+2
+3,201427E-6
+1,565234E-7
+5,132033E-1
+1,976822E-1
+1,000000E+2	1,050000E+2
+3,201427E-6	2,194001E-6
+1,565234E-7	2,633107E-7
+5,132033E-1	-2,719581E-1
+1,976822E-1	2,540321E-1
+1,000000E+2	1,050000E+2	1,100000E+2
+3,201427E-6	2,194001E-6	1,849312E-6
+1,565234E-7	2,633107E-7	2,412892E-7
+5,132033E-1	-2,719581E-1	-6,091760E-1
+1,976822E-1	2,540321E-1	2,341368E-1
+Frequency	Mean Amplitude	Error Amplitude	Mean Phaseshift	Error  PhaseshiftFrequency	Mean Amplitude	Error Amplitude	Mean Phaseshift	Error  Phaseshift
