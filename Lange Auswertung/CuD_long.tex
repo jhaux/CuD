@@ -1,6 +1,8 @@
 \documentclass[a4paper,12pt]{article}
+\usepackage{multicol}
+\usepackage{amsmath}
 \usepackage[utf8]{inputenc}
-\usepackage{ngerman}
+\usepackage[english]{babel}
 
 %opening
 \title{The Vibrating Reed}
@@ -11,9 +13,15 @@
 \maketitle
 
 \begin{abstract}
-This lab course analyses the characteristics of a vibrating reed. Aim is to not only understand the physical principals leading to the obtained results, but also to get an understanding of the technical principals of data aquisition. Using LabView we comunicate with the various instruments, manipulating settings and reading out measurements. 
-In a first part we find the resonance frequency $\omega_R$ of the vibrtating reed and its first two harmonics, in a second we determine the temperature dependecy of $\omega_R(T)$.
+This lab course analyses the characteristics of a vibrating reed. Aim is to not only understand the physical 
+principals leading to the obtained results, but also to get an understanding of the technical principals of 
+data aquisition. Using LabView we comunicate with the various instruments, manipulating settings and reading out measurements. 
+In a first part we find the resonance frequency $\omega_R$ of the vibrtating reed and its first two harmonics, in a 
+second we determine the temperature dependecy of $\omega_R(T)$.
 \end{abstract}
+\vspace{2em}
+
+%\begin{multicols}{2}
 
 \section{Introduction}
 \label{sec:intro}
@@ -21,10 +29,13 @@ In a first part we find the resonance frequency $\omega_R$ of the vibrtating ree
 \section{Theory}
 \label{sec:theo}
 
+To get a good understanding of the underlying processes that occur in the experiment we need to understand how a damped harmonic
+oscillator under an external force behaves. We will derive how to calculate the Eigenvalues of the frequencies of an harmonic oscillator to later
+estimate their actual values.
 
 \subsection{Driven and damped harmonic oszilator with the example of a vibrating reed}
 \label{sec:osz}
-By applying the following differtial equation we can describe a harmonic oszilator, driven by the force $F = F_0 cos(\omega t)$ and damped by the dampening factor $\gamma$ and with its Eigen-frequency $\omega_0$:
+By applying the following differential equation we can describe a harmonic oscillator, driven by the force $F = F_0 cos(\omega t)$ and damped by the dampening factor $\gamma$ and with its Eigen-frequency $\omega_0$:
 \begin{equation}
  \frac{\partial^2z}{\partial t^2} + \gamma \frac{\partial z}{\partial t} + \omega_0^2 = f_0 \mathrm{cos}(\omega t)
  \label{eq:stAmp}
@@ -37,7 +48,7 @@ By assuming that $z = \zeta e^{i(\omega t - \phi}$ we find the stationary soluti
  \zeta = \frac{f_0}{\sqrt{(\omega_0^2 - \omega^2)^2 + \gamma^2\omega^2}}
 \end{equation}
 It has the shape of a Lorentzian function.
-It is also possible to find the phasedifference of driving force and oszillator:
+It is also possible to find the phase difference of driving force and oscillator:
 \begin{equation}
  \mathrm{tan}(\phi) = \frac{\gamma\omega}{\omega_0^2 - \omega^2}
 \end{equation}
@@ -70,35 +81,77 @@ This way we can determine the different Eigen-frequencies $\nu_n$
 \end{equation}
 
 $\alpha_n$ is calculated numerically:
-\begin{eqnarray}
- \alpha_0 = 1,424987 \mathrm{,} \alpha_1 = 0,992249  \mathrm{,} \alpha_2 = 1,000198 \mathrm{,} \alpha_3 = 0,999994 \mathrm{,}
-\end{eqnarray}
+\begin{align}
+ \alpha_0 &= 1,424987 \mathrm{,}\; \alpha_1 = 0,992249 \mathrm{,} \\ 
+ \alpha_2 &= 1,000198 \mathrm{,}\; \alpha_3 = 0,999994 \mathrm{,} \\
+ \alpha_n &\approx 1 \text{ for all other } n.
+\end{align}
 
- $\alpha_n \approx 1$ for all other $n$.
+
+Applying a force on the damped harmonic oscillator, that attacks only at the end of the reed ($x = l$), we can formulate the following differential equation:
+\begin{equation}
+ \frac{\partial^2z}{\partial t^2} + \frac{d^2}{12} v_Y \frac{\partial^4z}{\partial x^4} = f_0 e^{i\omega t}\delta(x - l)
+\end{equation}
+
+With only a small damping factor we can approximate the vibration modes around the resonance frequencies with a Lorentzian.
+The relative amplitude can then be approximately described by 
+
+\begin{align}
+ \left| \frac{\zeta(\omega)}{\zeta(\omega_{R,n})} \right| &\approx \frac{\gamma \omega_{0,n)}}{\sqrt{(\omega_{0,n}^2 - \omega^2)^2 + \gamma^2\omega_{0,n}^2}} \\
+ n &= 0, 1, 2,\dots \; \text{.}
+\end{align}
+
+
+
+
+
+
+\section{Setup}
+\label{sec:set}
+% Schöne Graphiken hier
+% Ausführlich weil einfach!
+
+{\LARGE Graphik}
+
+The core element of our experiment is the vibrating reed.  It is a small metal plate that is fixed to the ground. The free end is placed between 
+two electrodes as can be seen in figure \ref{fig:set}.
 
 
 
 \subsection{}
 
-\section{Setup}
-\label{sec:set}
+\subsection{Parameter estimation}
+% Abschätzungen der verschiedenen Parameter
+
+Prior to the experiment we need to estimate certain parameters to the reed, we use, be abled to run the experiment. These are the maximum Voltage $U_{d,max}$, which shows, 
+how small our expected signals are and the base Eigenfrequency $\nu_0$, where we have to look for the Lorentz-peaks, we want to observe.
+
+
+% U_d,maximum
+The maximum
+% nu_0
+
 
 \subsection{Vibrating Reed}
 \label{sec:reed}
-
+% ?? Sollte im Theorieteil abgearbeitet sein
 
 \section{Methods}
 \label{sec:meth}
+% Hier kommen die genutzten VIs rein und die Fitmethoden
 
 
 \section{Results}
 \label{sec:res}
-
+% Kurz und knackig
+% Alle aussagekräftigen graphen
 
 \section{Discussion}
 \label{sec:disk}
+% Wieder ausführlich
+% Siehe Protokoll
 
-
+%\end{multicols}
 \end{document}
 
 \bibliography{CuD_long}
