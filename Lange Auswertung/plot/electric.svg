@@ -16,7 +16,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="electric.svg">
+   sodipodi:docname="electric.svg"
+   inkscape:export-filename="/home/johannes/Google Drive/Uni HD/FP/Computer und Datenverarbeitung/CuD/Lange Auswertung/plot/electric.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs4">
     <linearGradient
@@ -247,11 +250,11 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2515"
-     inkscape:window-height="1416"
+     inkscape:window-width="1257"
+     inkscape:window-height="1388"
      inkscape:window-x="1725"
      inkscape:window-y="24"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -296,11 +299,12 @@
       <rect
          ry="4.6428571"
          y="846.53802"
-         x="132.9007"
+         x="114.9007"
          height="45.456863"
-         width="90.913727"
+         width="126.91373"
          id="rect4136"
-         style="fill:#ffffff;stroke:#000000;stroke-width:2.50000000000000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;fill-opacity:1" />
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         rx="4.6428571" />
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
@@ -308,12 +312,12 @@
          d="m 178.35756,845.88008 0,-72.71429"
          style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
       <rect
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.50000024;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
          id="rect3955"
-         width="19.849493"
-         height="15.304069"
-         x="132.9007"
-         y="-907.28302"
+         width="55.349495"
+         height="18.80407"
+         x="113.9007"
+         y="-910.78308"
          ry="5.8131104"
          transform="scale(1,-1)"
          rx="5.8131104" />
@@ -321,12 +325,12 @@
          rx="5.8131104"
          transform="scale(1,-1)"
          ry="5.8131104"
-         y="-907.28302"
-         x="204.1507"
-         height="15.304069"
-         width="19.849493"
-         id="rect3961"
-         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         y="-910.78308"
+         x="185.9007"
+         height="18.80407"
+         width="55.349495"
+         id="rect3128"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.50000024;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -730,7 +734,7 @@
          x="340"
          sodipodi:role="line">U<tspan
    style="font-size:65.00000334%;baseline-shift:sub"
-   id="tspan5904">g</tspan></tspan></text>
+   id="tspan3102">B</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -790,5 +794,27 @@
          d="m 294.78389,863.11256 0,-22.89258"
          style="fill:none;stroke:#000000;stroke-width:1.78360808;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:12.00000095px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="103.52441"
+       y="845.73041"
+       id="text5874-5"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="103.52441"
+         y="845.73041"
+         id="tspan5882-4">Peltier</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text3130"
+       y="846.23041"
+       x="174.52441"
+       style="font-size:12.00000095px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         id="tspan3132"
+         y="846.23041"
+         x="174.52441"
+         sodipodi:role="line">Pt1000</tspan></text>
   </g>
 </svg>

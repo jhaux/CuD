@@ -67,7 +67,7 @@
 \sectionfont{\raggedright}
 
 %TITLE
-\title{The Vibrating Reed}
+\title{The Vibrating Reed Experiment}
 \author{Johannes Haux}
 \date{1.4.2015}
 
@@ -107,8 +107,9 @@ second we determine the temperature dependency of $\omega_R(T)$.
 \label{sec:theo}
 
 To get a good understanding of the underlying processes that occur in the experiment we need to understand how a damped harmonic
-oscillator under an external force behaves. We will derive how to calculate the Eigenvalues of the frequencies of an harmonic oscillator to later
-estimate their actual values.
+oscillator under an external force behaves. We will derive how to calculate the Eigenvalues of the frequencies of an harmonic oscillator to later estimate their actual values.
+
+This whole section is a short english version of the german equivalent in the script of this experiment: \cite{fp75}.
 
 \section{Driven and damped harmonic oscillator with the example of a vibrating reed}
 \label{sec:osz}
@@ -188,22 +189,92 @@ The relative amplitude can then be approximately described by
 % Schöne Graphiken hier
 % Ausführlich weil einfach!
 
-\widegraph[./plot/setup]{Schematic Setup of the vibrating reed experiment}{fig:set}
+\widegraph[./plot/setup]{Schematic Setup of the vibrating reed experiment. The components are: 1: Reed, 2: electrodes, 3: brass shielding, 4: Pt1000 thermometer, 5: Peltier element, 6: heat exchange, 7: fan, 8: computer, 9: \LIA, 10: frequency-generator, 11: battery. }{fig:set}
 
 The core element of our experiment is the reed (1 in figure \ref{fig:set}).  It is a small metal plate that is fixed to the ground between two copper blocks.
 The free end is placed between two electrodes (2) as can be seen in figure \ref{fig:set}. Its dimensions are approximately 
-\SI{2}{\centi\meter} in length, \SI{5}{\milli\meter} in width and \SI{200}{\micro\meter} in depth. A brass shielding prevents outside effects to influence the measurement.
-Below the reed is a Pt1000 resitor (4), a Peltier-Element (5), a heat exchange unit (6) and a cooler (7). 
-The experiment is controlled via a computer (8), which can manipulate parameters for the used \LIA (9) and frequency-generator (10). 
+\SI{2}{\centi\meter} in length, \SI{5}{\milli\meter} in width and \SI{200}{\micro\meter} in depth. A brass shielding (3) prevents outside effects to influence the measurement.
+Below the reed is a  (4), a Peltier-Element for temperature control (5), a heat exchange unit (6) and a fan (7). 
+The experiment is controlled via a computer (8), which can manipulate parameters for the used \LIA (9) and frequency-generator (10). A constant voltage for the experiment is supplied by a battery (11).
 For more information on the \LIA see section \ref{sec:lia}
+
+The Reed is forced to vibrate by positioning an electrode next to it at a distance of $g_d$, and then applying a Voltage $U=U_0\operatorname{cos}(\omega t)$ to it. The reed and the electrode form a condensator with area of $S$. Thus a force of $F = \frac{1}{2} \frac{C_aU^2}{g_a}$ is acting on the reed, with $C_a = \epsilon_0 \frac{S}{g_a}$. As $U$ is time dependent we finally find 
+\begin{equation}
+ F(t) = \frac{1}{4} C_a \frac{U_0^2}{g_a}(1 + \operatorname{cos}(2\omega t)) \; \text{.}
+\end{equation}
+
+It is worth noting that the reed vibrates with twice the frequency than the applied voltage.
+
+To measure the frequency of the reed a second electrode is put on the other side of the reed, which also forms a condensator with the capacity $C = \frac{C_d}{1-\frac{z}{g_d}} \approx C_d(1+\frac{z}{g_d}$, with $C_d = \epsilon_0 \frac{S}{g_g}$.
+
+In the end we measure the voltage $U_b$, as shown in figure \ref{fig:el}. As described in the experiment script \cite{fp75} we can approximate the voltage with 
+
+\begin{equation}
+ U_d \approx U_b\frac{z}{g_d}\frac{C_d}{C_L} \; \text{.}
+\end{equation}
+
+All material and setup parameters for this experiment can be found in table \ref{tab:par}.
+\begin{table*}[ht!]
+\centering
+ \begin{tabular}{c|c|l}
+ Parameter	& Values					& Description \\
+ \hline\hline
+  $l$		& \SI{2}{\centi\meter}				& reed length \\
+  $b$		& \SI{5}{\milli\meter}				& reed width \\
+  $d$		& \SI{200}{\micro\meter}			& reed thickness \\
+  $g_a$		& \SI{100}{\micro\meter}			& distance forcing electrode to reed \\
+  $g_d$		& \SI{100}{\micro\meter}			& distance detection electrode to reed \\
+  $D_a = D_d$	& \SI{3}{\milli\meter}				& diameter of electrodes \\
+  $U_a = U_0$	& \SI{10}{\volt}				& amplitude of the forcing voltage \\
+  $U_B$		& \SI{108}{\volt}				& battery voltage \\
+  $E$		& \SI{98}{\giga\newton\per\meter\squared}	& elasticity of brass \\
+  $\rho$	& \SI{8.5e3}{\kilo\gram\per\cubic\meter}	& density of brass \\
+  $C_L$		& \SI{300}{\pico\farad}				& parasitical line capacity \\
+  $R$		& \SI{300}{\mega\ohm}				& additional resistor \\
+  \hline\hline
+ \end{tabular}
+ \caption{Material and setup parameters for the experiment.}
+ \label{tab:par}
+\end{table*}
 
 \widegraph[./plot/electric]{Electrical configuration of the vibrating reed experiment}{fig:el}
 
-
 \section{The \LIA}
-\label{sec.lia}
+\label{sec:lia}
+
+As will be shown in section \ref{sec:par} the signal we want to detect is small compared to the noise that accompanies it. Thus we need a \LIA to detect it:
+
+A \LIA relies on the PED, the ``phase sensitive detector''. Not only the Signal, but also a reference is supplied for the PED, containing information about frequency and phase of the signal. With the ``Comparer'' a rectangular signal is generated, which in turn operates on a switch in a periodic way. If the switch is in ``+1'' mode the original signal, if in ``-1'' mode, its invert  will be found at the exit. Using a low pass filter the first fourier Term of the resulting signal is selected, which is constant. Thus in the end, we get a voltage proportional to the input amplitude: $U \propto A\operatorname{cos}(\phi)$.
+To get the maximum amplitude at the exit we must set the relative phase $\phi$ such that $\operatorname{cos}(\phi) = 1$. As this is tedious we use a \DLIA. It generates to rectangular signals out of the reference signal with one being moved by $\pi/2$. Also the input signal is doubled and mixed with these two rectangular signals. Thus at the exit we have two signals of constant voltage:
+
+\begin{align}
+ U_1 &= A\operatorname{cos}(\phi) \; \text{and} \\
+ U_2 &= A\operatorname{sin}(\phi) \; \text{.}
+\end{align}
+
+From this we calculate the measured amplitude $A$ and the phase $\phi$:
+
+\begin{align}
+ A &= \sqrt{U_1^2 + U_2^2} \; \text{,} \\
+ \phi &= \operatorname{arctan}\left( \frac{U_2}{U_1} \right) \; \text{.}
+\end{align}
+
+\section{Electronic Setup}
+\label{sec:el}
+
+A schematic of the electronic setup can be found in figure \ref{fig:el}. 
+
+The frequency generator excites the reed with a frequency of $\nu / 2$ to oscillations with frequency $\nu$. As described before the signal is analyzed with a \DLIA and the necessary constant voltage is supplied by a battery. The excitation signal (used for the forcing) is supplied at the reference input of the \LIA. 
+
+Frequency generator and \LIA can be controlled and the output signals read from a computer via a GPIB interface (General Purpose Interface Bus).
+
+Heating and cooling of the experiment is done via a Peltier element, the current temperature can be read from a Pt1000 thermometer. Both are controlled via the AD-Ports of the \LIAn.
+
+
+\widegraph[./plot/LIA]{Schematic Setup of a \LIAn.}{fig:lia}
 
 \section{Parameter estimation}
+\label{sec:par}
 % Abschätzungen der verschiedenen Parameter
 
 Prior to the experiment we need to estimate certain parameters to the reed, we use, be abled to run the experiment. These are the maximum Voltage $U_{d,max}$, which shows, 
@@ -215,13 +286,12 @@ The maximum
 % nu_0
 
 
-\section{Vibrating Reed}
-\label{sec:reed}
-% ?? Sollte im Theorieteil abgearbeitet sein
 
 \chapter{Methods}
 \label{sec:meth}
 % Hier kommen die genutzten VIs rein und die Fitmethoden
+
+
 
 
 \chapter{Results}
@@ -235,7 +305,9 @@ The maximum
 % Siehe Protokoll
 
 %\end{multicols}
-\end{document}
 
+\onecolumn
+\bibliographystyle{plainnat}
 \bibliography{CuD_long}
+\end{document}
 
