@@ -1,4 +1,7 @@
-**.aux
+*.aux
 **.blg
-**.log
+*long.log
 **.backup
+**.lof
+**.toc
+**.out

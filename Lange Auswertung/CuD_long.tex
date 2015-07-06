@@ -1,39 +1,115 @@
-\documentclass[a4paper,12pt]{article}
-\usepackage{multicol}
-\usepackage{amsmath}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\documentclass[twoside, a4paper, DIV=11,twocolumn, 12pt]{book}
+% \documentclass[oneside, a4paper, DIV=11]{book}
 
-%opening
+% PACKAGES
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[singlespacing]{setspace} % 1,5 Zeilenabstand: onehalfspacing
+\usepackage[nottoc]{tocbibind} % Literaturverzeichnis im Inhaltsverzeichnis
+%\usepackage{subscript} % Tiefegestellter Text außerhalb des Mathemodus
+\usepackage{fixltx2e} % Tiefegestellter Text außerhalb des Mathemodus
+\usepackage{amsmath,
+	    amssymb,
+	    array,
+	    balance, % gleich lange säulen am ende jedes Kapitels
+	    color,
+	    graphicx,
+	    hyphsubst, % Silbentrennung wie ich es will
+	    hyperref,
+	    natbib,
+	    ragged2e,
+	    sectsty,
+	    siunitx, 
+	    tabularx,
+	    tikz}
+
+% \usepackage{pdflscape,}
+%\hypersetup{linktocpage} % nur die Seitenzahlen erscheinen als Link
+\usepackage{./src/mymacros}
+
+\usepackage{etoolbox} % citations in italic:
+\makeatletter
+\patchcmd{\NAT@test}{\else\NAT@nm}{\else\NAT@nmfmt{\NAT@nm}}{}{}
+\let\NAT@up\itshape
+\makeatother
+
+
+% \usepackage{showframe} % show margins and stuff
+
+% SETTINGS
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\sisetup{
+    locale=DE,
+    loctolang={DE:ngerman},
+    load-configurations = binary,
+    binary-units = true,
+    list-final-separator = { \translate{und} },
+    list-units=single,
+    range-phrase = { \translate{bis} },
+    range-units=single,
+    round-mode = places,
+    round-precision = 3
+}
+
+\pagestyle{plain}
+
+% sectsty setup
+\chapterfont{\raggedright}
+\sectionfont{\raggedright}
+
+%TITLE
 \title{The Vibrating Reed}
 \author{Johannes Haux}
+\date{1.4.2015}
 
 \begin{document}
-
+\onecolumn
 \maketitle
+\pagenumbering{roman}
 
-\begin{abstract}
+\chapter*{\,}
+
+ %Deutsch
+  \noindent \textbf{Abstract} \hspace{0.3cm} 
 This lab course analyses the characteristics of a vibrating reed. Aim is to not only understand the physical 
 principals leading to the obtained results, but also to get an understanding of the technical principals of 
-data aquisition. Using LabView we comunicate with the various instruments, manipulating settings and reading out measurements. 
-In a first part we find the resonance frequency $\omega_R$ of the vibrtating reed and its first two harmonics, in a 
-second we determine the temperature dependecy of $\omega_R(T)$.
-\end{abstract}
-\vspace{2em}
+data acquisition. Using LabView we communicate with the various instruments, manipulating settings and reading out measurements. 
+In a first part we find the resonance frequency $\omega_R$ of the vibrating reed and its first two harmonics, in a 
+second we determine the temperature dependency of $\omega_R(T)$.
 
-%\begin{multicols}{2}
+\emptypage
 
-\section{Introduction}
+\tableofcontents
+
+\emptypage
+
+\listoffigures
+
+\newpage
+
+% jetzt gehts los
+\pagenumbering{arabic}
+\twocolumn
+\balance % gleich lange säulen am ende jedes Kapitels
+\chapter{Introduction}
 \label{sec:intro}
 
-\section{Theory}
+\chapter{Theory}
 \label{sec:theo}
 
 To get a good understanding of the underlying processes that occur in the experiment we need to understand how a damped harmonic
 oscillator under an external force behaves. We will derive how to calculate the Eigenvalues of the frequencies of an harmonic oscillator to later
 estimate their actual values.
 
-\subsection{Driven and damped harmonic oszilator with the example of a vibrating reed}
+\section{Driven and damped harmonic oscillator with the example of a vibrating reed}
 \label{sec:osz}
 By applying the following differential equation we can describe a harmonic oscillator, driven by the force $F = F_0 cos(\omega t)$ and damped by the dampening factor $\gamma$ and with its Eigen-frequency $\omega_0$:
 \begin{equation}
@@ -59,13 +135,13 @@ Equation \ref{eq:stAmp} reaches its maximum at
 \end{equation}
 the resonance frequency.
 
-The attenuation of the system is described by the quality $\mathcal{Q}$ of the oszilator:
+The attenuation of the system is described by the quality $\mathcal{Q}$ of the oscillator:
 \begin{equation}
  \mathcal{Q} = 2\pi\frac{\omega_0}{\gamma}
 \end{equation}
 
 
-As described in \ref{bib:cla} the oszilation of a vibrating reed can be described as follows:
+As described in \ref{bib:cla} the oscillation of a vibrating reed can be described as follows:
 \begin{equation}
  \frac{\partial^2 z}{\partial t^2} = -\frac{d^2}{12} v_Y^2 \frac{\partial^4 z}{\partial x^4}
 \end{equation}
@@ -75,7 +151,7 @@ As
  v_Y = \sqrt{\frac{E}{\rho}}
 \end{equation}
 holds, we see that $v_Y$ depends on the mass density $\rho$ and the modulus of elasticity $E$.
-This way we can determine the different Eigen-frequencies $\nu_n$
+This way we can determine the different Eigenfrequencies $\nu_n$
 \begin{equation}
  \nu_n = \alpha_n (2n+1)^2 \frac{\pi}{16\sqrt{3}} \frac{d}{l^2} v_Y
 \end{equation}
@@ -106,21 +182,23 @@ The relative amplitude can then be approximately described by
 
 
 
-\section{Setup}
+\chapter{Setup}
 \label{sec:set}
 % Schöne Graphiken hier
 % Ausführlich weil einfach!
 
-{\LARGE Graphik}
+\widegraph[./plot/setup]{Schematic Setup of the vibrating reed experiment}{fig:set}
 
-The core element of our experiment is the vibrating reed.  It is a small metal plate that is fixed to the ground. The free end is placed between 
-two electrodes as can be seen in figure \ref{fig:set}.
+The core element of our experiment is the reed (1 in figure \ref{fig:set}).  It is a small metal plate that is fixed to the ground between two copper blocks.
+The free end is placed between two electrodes (2) as can be seen in figure \ref{fig:set}. Its dimensions are approximately 
+\SI{2}{\centi\meter} in length, \SI{5}{\milli\meter} in width and \SI{200}{\micro\meter} in depth. A brass shielding prevents outside effects to influence the measurement.
+
+\widegraph[./plot/electric]{Electrical configuration of the vibrating reed experiment}{fig:el}
 
 
+\section{}
 
-\subsection{}
-
-\subsection{Parameter estimation}
+\section{Parameter estimation}
 % Abschätzungen der verschiedenen Parameter
 
 Prior to the experiment we need to estimate certain parameters to the reed, we use, be abled to run the experiment. These are the maximum Voltage $U_{d,max}$, which shows, 
@@ -132,21 +210,21 @@ The maximum
 % nu_0
 
 
-\subsection{Vibrating Reed}
+\section{Vibrating Reed}
 \label{sec:reed}
 % ?? Sollte im Theorieteil abgearbeitet sein
 
-\section{Methods}
+\chapter{Methods}
 \label{sec:meth}
 % Hier kommen die genutzten VIs rein und die Fitmethoden
 
 
-\section{Results}
+\chapter{Results}
 \label{sec:res}
 % Kurz und knackig
 % Alle aussagekräftigen graphen
 
-\section{Discussion}
+\chapter{Discussion}
 \label{sec:disk}
 % Wieder ausführlich
 % Siehe Protokoll
